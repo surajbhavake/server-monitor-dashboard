@@ -11,6 +11,9 @@ def system_stats(request):
         'ram_percent' : psutil.virtual_memory().percent,
         'disk_percent': psutil.disk_usage('/').percent,
         'uptime_seconds' : psutil.boot_time(), 
+        'cpu_count': psutil.cpu_count(),
+        'process_count': len(psutil.pids()),
+
     }
     return Response(data)
 
