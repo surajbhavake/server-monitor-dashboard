@@ -34,6 +34,7 @@ DEBUG = env.bool('DEBUG',default=True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS',default=[])
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,10 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'monitor'
+    'corsheaders',
+    'monitor',
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS',default = [])
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
